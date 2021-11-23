@@ -2,6 +2,7 @@ package com.github.lihaomin.ddd.bank.persistence.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
  * @date 2021/11/23
  */
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "T_ACCOUNT")
 public class AccountDO {

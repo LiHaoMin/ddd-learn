@@ -20,9 +20,8 @@ import java.math.BigDecimal;
 public class TransferController {
     private final TransferService transferService;
 
-    @PostMapping
-    public ResponseEntity<Boolean> transfer(String targetAccountNumber, BigDecimal amount, HttpSession session) {
-        Long userId = (Long) session.getAttribute("userId");
+    @PostMapping("/transfer")
+    public ResponseEntity<Boolean> transfer(String targetAccountNumber, BigDecimal amount, Long userId) {
         return transferService.transfer(userId, targetAccountNumber, amount, "CNY");
     }
 }
