@@ -38,7 +38,7 @@ public class NewTransferServiceImpl implements TransferService {
         // 2. 业务参数校验 TODO ???目标币种不一致
         // 3. 币种不一致,从外部API获取税率 TODO ???币种不一致
         ExchangeRate exchangeRate = exchangeRateService.getExchangeRate(sourceAccount.getCurrency(), targetAccount.getCurrency());
-        Money targetMoney = new Money(targetAmount, new Currency(targetCurrency));
+        Money targetMoney = new Money(targetAmount, targetAccount.getCurrency());
 //        Money sourceMoney = exchangeRate.exchangeTo(targetMoney);
 //        // 4. 业务参数校验
 //        // 5. 计算新值，并且更新字段

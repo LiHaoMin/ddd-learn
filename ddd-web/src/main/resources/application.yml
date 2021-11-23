@@ -14,6 +14,7 @@ spring:
     url: jdbc:h2:mem:ddd_db
     data-username: sa
     data-password:
+    data: classpath:db/bank.sql
   jpa:
     show-sql: true
     hibernate:
