@@ -5,6 +5,13 @@
     <packaging>pom</packaging>
     <modules>
         <module>ddd-web</module>
+        <module>ddd-domain</module>
+        <module>ddd-application</module>
+        <module>ddd-common</module>
+        <module>ddd-external</module>
+        <module>ddd-messaging</module>
+        <module>ddd-persistence</module>
+        <module>ddd-types</module>
     </modules>
 
     <groupId>com.github.lihaomin.ddd</groupId>
@@ -16,19 +23,44 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.12.RELEASE</version>
     </parent>
-    <properties>
-        <java.version>1.8</java.version>
-        <project.encoding>UTF-8</project.encoding>
-        <lombok.version>1.18.4</lombok.version>
-        <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!--项目内依赖模块定义-->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring-boot.version}</version>
+                <groupId>com.github.lihaomin.ddd</groupId>
+                <artifactId>ddd-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>ddd-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.lihaomin.ddd</groupId>
+                <artifactId>ddd-types</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.lihaomin.ddd</groupId>
+                <artifactId>ddd-persistence</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.lihaomin.ddd</groupId>
+                <artifactId>ddd-messaging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.lihaomin.ddd</groupId>
+                <artifactId>ddd-external</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.lihaomin.ddd</groupId>
+                <artifactId>ddd-application</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -48,7 +80,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-                    <encoding>${project.encoding}</encoding>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
         </plugins>
