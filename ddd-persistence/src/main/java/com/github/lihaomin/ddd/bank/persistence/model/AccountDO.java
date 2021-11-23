@@ -1,5 +1,6 @@
 package com.github.lihaomin.ddd.bank.persistence.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -13,11 +14,13 @@ import java.math.BigDecimal;
  * @date 2021/11/23
  */
 @Data
+@AllArgsConstructor
 @Entity(name = "T_ACCOUNT")
 public class AccountDO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String accountNumber;
     private String currency;
     private BigDecimal available;
     private BigDecimal dailyLimit;

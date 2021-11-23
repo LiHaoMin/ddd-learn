@@ -1,5 +1,6 @@
 package com.github.lihaomin.ddd.bank.repository.impl;
 
+import com.github.lihaomin.ddd.bank.persistence.AccountBuilder;
 import com.github.lihaomin.ddd.bank.persistence.AccountDAO;
 import com.github.lihaomin.ddd.bank.persistence.model.AccountDO;
 import com.github.lihaomin.ddd.bank.types.AccountId;
@@ -9,7 +10,6 @@ import com.github.lihaomin.ddd.domain.entity.Account;
 import com.github.lihaomin.ddd.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 /**
  * @author lihaomin
@@ -22,24 +22,25 @@ public class AccountRepositoryImpl implements AccountRepository {
 
     @Override
     public Account find(AccountId id) {
-        return null;
+        AccountDO accountDO = accountDAO.findById(id.getValue()).get();
+        return AccountBuilder.toAccount(accountDO);
     }
 
     @Override
     public Account find(AccountNumber accountNumber) {
-        return null;
+        AccountDO accountDO = accountDAO.findByAccountNumber(accountNumber.getValue());
+        return AccountBuilder.toAccount(accountDO);
     }
 
     @Override
     public Account find(UserId userId) {
-        AccountDO accountDO = accountDAO.getOne(userId.getValue());
-        Account account = new Account();
-        // DO 转换实体
-        return account;
+        AccountDO accountDO = accountDAO.findById(userId.getValue()).get();
+        return AccountBuilder.toAccount(accountDO);
     }
 
     @Override
     public Account save(Account account) {
-        return null;
+        AccountDO accountDO = AccountBuilder.fromAccount(account);
+        return AccountBuilder.toAccount(accountDAO.save(accountDO));
     }
 }

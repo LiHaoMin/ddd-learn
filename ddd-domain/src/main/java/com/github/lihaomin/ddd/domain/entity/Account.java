@@ -8,6 +8,7 @@ import com.github.lihaomin.ddd.bank.types.UserId;
 import com.github.lihaomin.ddd.exception.DailyLimitExceededException;
 import com.github.lihaomin.ddd.exception.InsufficientFundsException;
 import com.github.lihaomin.ddd.exception.InvalidCurrencyException;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -15,8 +16,9 @@ import lombok.Data;
  * @date 2021/11/23
  */
 @Data
+@AllArgsConstructor
 public class Account {
-    private AccountId id;
+    private AccountId accountId;
     private AccountNumber accountNumber;
     private UserId userId;
     private Money available;
