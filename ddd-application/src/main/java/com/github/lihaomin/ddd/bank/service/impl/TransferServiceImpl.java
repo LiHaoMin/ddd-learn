@@ -1,6 +1,6 @@
 package com.github.lihaomin.ddd.bank.service.impl;
 
-import com.github.lihaomin.ddd.bank.persistence.AccountDAO;
+import com.github.lihaomin.ddd.bank.persistence.dao.AccountDAO;
 import com.github.lihaomin.ddd.bank.persistence.model.AccountDO;
 import com.github.lihaomin.ddd.bank.service.TransferService;
 import com.github.lihaomin.ddd.bank.service.YahooForexService;

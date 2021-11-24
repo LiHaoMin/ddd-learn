@@ -2,7 +2,6 @@ package com.github.lihaomin.ddd.bank.service.impl;
 
 import com.github.lihaomin.ddd.bank.service.TransferService;
 import com.github.lihaomin.ddd.bank.types.AccountNumber;
-import com.github.lihaomin.ddd.bank.types.Currency;
 import com.github.lihaomin.ddd.bank.types.ExchangeRate;
 import com.github.lihaomin.ddd.bank.types.Money;
 import com.github.lihaomin.ddd.bank.types.UserId;
@@ -35,8 +34,8 @@ public class NewTransferServiceImpl implements TransferService {
         // 1. 查询原账户、目标账户
         Account sourceAccount = accountRepository.find(new UserId(sourceUserId));
         Account targetAccount = accountRepository.find(new AccountNumber(targetAccountNumber));
-        // 2. 业务参数校验 TODO ???目标币种不一致
-        // 3. 币种不一致,从外部API获取税率 TODO ???币种不一致
+        // 2. 业务参数校验
+        // 3. 币种不一致,从外部API获取税率
         ExchangeRate exchangeRate = exchangeRateService.getExchangeRate(sourceAccount.getCurrency(), targetAccount.getCurrency());
         Money targetMoney = new Money(targetAmount, targetAccount.getCurrency());
 //        Money sourceMoney = exchangeRate.exchangeTo(targetMoney);
